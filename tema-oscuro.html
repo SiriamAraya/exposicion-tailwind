@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modo Oscuro con Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+</head>
+
+<body
+  class="bg-gray-100 text-gray-900 font-sans leading-relaxed transition-colors duration-300"
+  x-data="{ darkMode: false }"
+  x-init="$watch('darkMode', value => {
+    if(value) {
+      document.documentElement.classList.add('dark');
+      document.body.classList.remove('bg-gray-100', 'text-gray-900');
+      document.body.classList.add('bg-gray-900', 'text-gray-100');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('bg-gray-900', 'text-gray-100');
+      document.body.classList.add('bg-gray-100', 'text-gray-900');
+    }
+  })"
+  :class="darkMode ? 'dark' : ''"
+>
+
+  <!-- Header -->
+  <header class="bg-blue-600 dark:bg-blue-800 text-white py-5 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-3xl font-bold tracking-tight">Modo Oscuro con Tailwind</h1>
+      <nav>
+        <ul class="flex gap-8 text-lg font-medium">
+         <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
+          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
+          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
+          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
+          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Modo Oscuro -->
+  <main class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Activar Modo Oscuro</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
+        Haga clic en el interruptor para cambiar entre el modo oscuro y claro.
+      </p>
+      <button
+        @click="darkMode = !darkMode"
+        class="bg-blue-600 dark:bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-300 font-semibold shadow"
+        aria-label="Cambiar modo oscuro"
+      >
+        Cambiar Modo
+      </button>
+    </div>
+
+    <section id="tema-oscuro" class="max-w-4xl mx-auto space-y-8">
+      <h2 class="text-4xl font-semibold mb-4 text-primary dark:text-secondary">¿Cómo hacer un tema oscuro en TailwindCSS?</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        Activar el modo oscuro con Tailwind CSS es súper fácil y elegante! Puedes hacer que tu sitio cambie automáticamente según la preferencia del sistema del usuario o controlarlo manualmente. Aquí te explico ambas formas:
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-2 text-primary dark:text-secondary">🌓 Opción 1: Modo automático (según el sistema del usuario)</h3>
+      <p class="text-gray-700 dark:text-gray-300">
+        Configura Tailwind para usar modo oscuro. En tu archivo <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">tailwind.config.js</code>, agrega esta línea:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
+module.exports = {
+  darkMode: 'media', // usa 'media' para seguir la preferencia del sistema
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+      </pre>
+      <p class="text-gray-700 dark:text-gray-300">
+        Aplica clases <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark:</code> en tus estilos. Tailwind usará estas clases cuando el modo oscuro esté activo:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-6 font-mono shadow-inner">
+&lt;div class="bg-white text-black dark:bg-gray-900 dark:text-white p-4 rounded"&gt;
+  ¡Hola en modo oscuro!
+&lt;/div&gt;
+      </pre>
+
+      <h3 class="text-2xl font-semibold mb-2 text-primary dark:text-secondary">🌘 Opción 2: Control manual con clase <code>dark</code></h3>
+      <p class="text-gray-700 dark:text-gray-300">
+        Configura Tailwind para usar clase <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark</code>. En <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">tailwind.config.js</code>:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
+module.exports = {
+  darkMode: 'class', // activa modo oscuro con la clase "dark"
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+      </pre>
+      <p class="text-gray-700 dark:text-gray-300">
+        Aplica la clase <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark</code> a un elemento raíz (por ejemplo, <code>&lt;html&gt;</code> o <code>&lt;body&gt;</code>):
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
+&lt;html class="dark"&gt;
+  ...
+&lt;/html&gt;
+      </pre>
+      <p class="text-gray-700 dark:text-gray-300">
+        Usa clases condicionales <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark:</code> en tu HTML:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-6 font-mono shadow-inner">
+&lt;div class="bg-gray-100 text-black dark:bg-gray-800 dark:text-white p-4 rounded"&gt;
+  ¡Contenido adaptable al tema!
+&lt;/div&gt;
+      </pre>
+
+      <p class="text-gray-700 dark:text-gray-300">
+        Agrega un botón para cambiar entre temas usando JavaScript:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 font-mono shadow-inner">
+&lt;button onclick="document.documentElement.classList.toggle('dark')"&gt;
+  Cambiar tema
+&lt;/button&gt;
+      </pre>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 dark:bg-blue-700 text-white py-6 mt-12">
+    <div class="max-w-7xl mx-auto text-center text-sm select-none">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

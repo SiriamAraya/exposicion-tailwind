@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalar Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-3xl font-bold">Instalar Tailwind CSS</h1>
+      <nav>
+        <ul class="flex gap-8">
+         <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
+          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
+          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
+          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
+          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Instalación -->
+  <main class="py-16 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-4">Métodos de instalación</h2>
+      <p class="text-lg text-gray-600 mb-6">Elige el método que mejor se adapte a tu proyecto:</p>
+
+      <!-- Instalación con npm -->
+      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold text-green-600">Con npm</h3>
+        <p class="text-gray-600 mb-4">Ideal para proyectos modernos con herramientas como Vite, Webpack o Next.js.</p>
+        <pre class="bg-gray-900 text-green-400 text-sm rounded p-6 overflow-x-auto">
+npm install -D tailwindcss
+npx tailwindcss init
+        </pre>
+        <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">¡Usar npm!</button>
+      </div>
+
+      <!-- Instalación con CDN -->
+      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold text-yellow-600">Con CDN</h3>
+        <p class="text-gray-600 mb-4">Para pruebas rápidas sin configuración.</p>
+        <pre class="bg-gray-900 text-yellow-400 text-sm rounded p-6 overflow-x-auto">
+&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+        </pre>
+        <button class="mt-4 bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition duration-300">Usar CDN</button>
+      </div>
+
+      <!-- Instalación con CLI -->
+      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold text-purple-600">Con CLI</h3>
+        <p class="text-gray-600 mb-4">Útil para quienes no quieren usar herramientas externas. Sólo necesitas configurar un archivo CSS</p>
+        <pre class="bg-gray-900 text-purple-300 text-sm rounded p-6 overflow-x-auto">
+npx tailwindcss -i ./input.css -o ./output.css --watch
+        </pre>
+        <button class="mt-4 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">Usar CLI</button>
+      </div>
+
+      <!-- Instalación con CLI -->
+      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold text-blue-600">Con Frameworks & CMS</h3>
+        <p class="text-gray-600 mb-4">Tailwind se integra fácilmente con Laravel, Nuxt, WordPress y más</p>
+        <pre class="bg-gray-900 text-blue-300 text-sm rounded p-6 overflow-x-auto">
+composer require laravel-frontend-presets/tailwindcss npm install && npm run dev
+        </pre>
+        <button class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Usar CLI</button>
+      </div>
+
+      <!--Instalación con Node.js -->
+  <div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+    <h3 class="text-2xl font-semibold text-green-600 dark:text-green-400">Con Node.js</h3>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">
+      Recomendado para desarrollos profesionales con herramientas modernas como Vite, Webpack o Next.js.
+    </p>
+
+    <ol class="list-decimal pl-6 space-y-3 text-gray-800 dark:text-gray-300">
+      <li>Instala Tailwind vía npm:
+        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
+npm install -D tailwindcss
+npx tailwindcss init
+        </pre>
+      </li>
+
+      <li>Configura el archivo <code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">tailwind.config.js</code> según tus preferencias.</li>
+
+      <li>Crea tu archivo CSS:
+        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+        </pre>
+      </li>
+
+      <li>Compila el CSS con CLI:
+        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
+npx tailwindcss -i ./styles.css -o ./output.css --watch
+        </pre>
+      </li>
+    </ol>
+
+    <button class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">
+      Instalar con Node.js
+    </button>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

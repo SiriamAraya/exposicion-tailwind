@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introducción a Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+  <style>
+    .page-transition {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .page-transition-enter {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <h1 class="text-4xl font-extrabold">Introducción a Tailwind CSS</h1>
+      <nav>
+        <ul class="flex gap-8">
+          <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
+          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
+          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
+          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
+          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Página principal -->
+  <main class="py-16 px-6 md:px-12">
+
+      <section id="por-que" class="max-w-5xl mx-auto px-4 py-12">
+  <h2 class="text-4xl font-extrabold mb-6 text-primary dark:text-secondary text-center">¿Por qué usar Tailwind CSS?</h2>
+
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-3xl mx-auto text-center">
+    A diferencia de frameworks como Bootstrap, Tailwind no impone estilos predefinidos. En su lugar, te ofrece un sistema de clases utilitarias que puedes combinar libremente para crear diseños únicos y completamente adaptados a tus necesidades. Esto significa <strong>control total sobre la apariencia</strong> de tu sitio web, sin las limitaciones de un sistema cerrado.
+  </p>
+
+  <h3 class="text-2xl font-semibold mt-10 mb-4 text-gray-900 dark:text-gray-100">⚡ Beneficios clave</h3>
+  <ul class="list-disc list-inside max-w-3xl mx-auto text-left space-y-3 text-gray-800 dark:text-gray-300">
+    <li><strong>Diseño ultra-rápido:</strong> Aplica estilos directamente en el HTML sin escribir CSS adicional.</li>
+    <li><strong>Consistencia visual:</strong> Utiliza un sistema de escalas bien definido para márgenes, paddings, colores y tipografías.</li>
+    <li><strong>Responsive incorporado:</strong> Clases como <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">sm:</code>, <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">md:</code> y <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">lg:</code> facilitan el diseño adaptable.</li>
+    <li><strong>CSS optimizado:</strong> Junto a herramientas como PurgeCSS o la integración con Vite o Webpack, elimina clases no utilizadas para reducir el tamaño final.</li>
+    <li><strong>Personalización total:</strong> Modifica el archivo <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">tailwind.config.js</code> para adaptar el framework a tu identidad visual.</li>
+    <li><strong>Compatible con frameworks modernos:</strong> Funciona perfectamente con React, Vue, Angular y cualquier stack moderno.</li>
+  </ul>
+
+  <h3 class="text-2xl font-semibold mt-10 mb-4 text-gray-900 dark:text-gray-100">🎨 ¿Para quién es ideal?</h3>
+  <ul class="list-disc list-inside max-w-3xl mx-auto text-left space-y-3 text-gray-800 dark:text-gray-300">
+    <li>Diseñadores que necesitan construir prototipos rápidamente sin sacrificar personalización</li>
+    <li>Desarrolladores que buscan eficiencia y control total en el markup</li>
+    <li>Equipos que requieren un sistema de diseño escalable, coherente y fácil de mantener</li>
+  </ul>
+</section>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="bg-blue-600 text-white py-6 mt-16">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const transitionElements = document.querySelectorAll('.page-transition');
+      setTimeout(() => {
+        transitionElements.forEach((element) => {
+          element.classList.add('page-transition-enter');
+        });
+      }, 200);
+    });
+  </script>
+
+</body>
+
+</html>

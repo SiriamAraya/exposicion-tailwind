@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario de Personalización</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+      <h1 class="text-3xl font-bold">Personaliza Tailwind CSS</h1>
+      <nav>
+        <ul class="flex flex-wrap gap-8">
+          <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
+          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
+          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
+          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
+          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
+          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
+          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-16">
+
+    <!-- Formulario -->
+    <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Personaliza tu Proyecto</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Selecciona tus preferencias para los colores, fuentes y tamaños.</p>
+
+      <form action="#" method="POST" class="space-y-8">
+        <!-- Color -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <label for="color" class="text-lg font-medium text-gray-900 dark:text-gray-100">Color principal</label>
+          <input type="color" id="color" name="color" class="w-20 h-20 rounded-lg border border-gray-300 dark:border-gray-600 cursor-pointer" value="#2563EB" />
+        </div>
+
+        <!-- Fuentes -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <label for="font" class="text-lg font-medium text-gray-900 dark:text-gray-100">Tipo de fuente</label>
+          <select id="font" name="font" class="p-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 w-full sm:w-auto">
+            <option value="sans-serif">Sans-serif</option>
+            <option value="serif">Serif</option>
+            <option value="monospace">Monospace</option>
+          </select>
+        </div>
+
+        <!-- Tamaños -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <label for="size" class="text-lg font-medium text-gray-900 dark:text-gray-100 flex items-center gap-2">
+            Tamaño de fuente: 
+            <span id="sizeValue" class="font-semibold">24</span> px
+          </label>
+          <input type="range" id="size" name="size" min="12" max="36" value="24" class="w-full sm:w-1/2 rounded-lg" 
+            oninput="document.getElementById('sizeValue').textContent = this.value" />
+        </div>
+
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg shadow transition duration-300">
+          Guardar Configuración
+        </button>
+      </form>
+    </section>
+
+    <!-- Sección Configuración -->
+    <section id="configuracion" class="max-w-4xl mx-auto px-4 sm:px-0">
+      <h2 class="text-4xl font-semibold mb-6 text-blue-700 dark:text-blue-400">¿Cómo crear una configuración de paletas de color, tamaños y tipo de letra?</h2>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Personalizar Tailwind CSS es como darle tu toque mágico a tu proyecto! Puedes adaptar colores, tamaños, tipografías y más desde su archivo de configuración. Aquí te explico cómo hacerlo paso a paso:
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3 text-blue-700 dark:text-blue-400">🛠️ 1. Crea el archivo de configuración</h3>
+      <p class="mb-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Si no lo tienes, puedes generarlo con:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-6 font-mono">
+npx tailwindcss init
+      </pre>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Esto creará <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">tailwind.config.js</code>, donde harás toda la personalización.
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3 text-blue-700 dark:text-blue-400">🎨 2. Define tu paleta de colores</h3>
+      <p class="mb-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Dentro del archivo:
+      </p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-8 font-mono">
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primario: '#1E40AF',
+        secundario: '#F59E0B',
+        fondo: '#F3F4F6',
+        acento: '#10B981',
+      },
+    },
+  },
+}
+      </pre>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Ahora puedes usar clases como <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">bg-primario</code>, <code>text-secundario</code>, etc. en tu HTML.
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3 text-blue-700 dark:text-blue-400">🔠 3. Personaliza tipografías</h3>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-8 font-mono">
+extend: {
+  fontFamily: {
+    sans: ['Inter', 'sans-serif'],
+    titulo: ['"Playfair Display"', 'serif'],
+  },
+}
+      </pre>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        En tu HTML puedes usar: <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">class="font-titulo"</code> o <code>class="font-sans"</code>.
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3 text-blue-700 dark:text-blue-400">📏 4. Ajusta tamaños personalizados</h3>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-8 font-mono">
+extend: {
+  spacing: {
+    '128': '32rem',
+    '144': '36rem',
+  },
+  fontSize: {
+    'xxs': '0.625rem',
+    'mega': '5rem',
+  },
+}
+      </pre>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        Y puedes usar clases como <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">h-128</code> o <code>text-mega</code>.
+      </p>
+
+      <h3 class="text-2xl font-semibold mb-3 text-blue-700 dark:text-blue-400">⚡ Bonus: Usa <code>@layer</code> para componentes reutilizables</h3>
+      <p class="mb-3 text-gray-700 dark:text-gray-300 leading-relaxed">En tu CSS personalizado:</p>
+      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 font-mono">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply bg-primario text-white px-4 py-2 rounded hover:bg-secundario;
+  }
+}
+      </pre>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
