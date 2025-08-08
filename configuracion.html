@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuración en Tailwind CSS</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+  <!-- Header -->   
+<nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+    </a>
+
+    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú principal</span>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<nav class="bg-gray-50 dark:bg-gray-700">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+
+    <div id="menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+        <li><a href="queEs.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué es?</a></li>
+        <li><a href="porqueUsar.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por qué usarlo?</a></li>
+        <li><a href="instalacion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a></li>
+        <li><a href="tema-oscuro.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema Oscuro</a></li>
+        <li><a href="configuracion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración de paletas</a></li>
+        <li><a href="layout.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a></li>
+        <li><a href="Componentes.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+
+
+  <!-- Main Content -->
+  <main class="py-16 px-6 md:px-12">
+    <h2 class="text-center p-4 max-w-3xl mx-auto mb-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow text-2xl">
+      Cómo configurar paleta de colores, tamaños y tipografía en un proyecto con Tailwind CSS
+    </h2>
+
+    <!-- Paleta de Colores -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+      <h3 class="text-2xl text-blue-600 dark:text-blue-400">1. Paleta de colores</h3>
+      <p>En Tailwind puedes definir tus propios colores usando <code>@theme</code> para reutilizarlos en toda la página</p>
+      <pre class="bg-gray-900 text-green-300 text-sm rounded p-6">
+@import "tailwindcss";
+@theme {
+  --color-primario: #6200ee;
+  --color-primario-dark: rgb(98, 0, 238);
+  --color-secundario: rgba(255, 0, 150, 0.8);
+}
+      </pre>
+      <p class="text-md text-gray-600 dark:text-gray-400">Ejemplo: <span class="text-primario">Texto con color primario</span></p>
+    </section>
+
+    <!-- Tamaños -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+      <h3 class="text-2xl font-semibold text-blue-600 dark:text-blue-400">2. Tamaños personalizados</h3>
+      <p>También se pueden definir medidas para usar en márgenes, paddings, anchos, altos, etc</p>
+      <pre class="bg-gray-900 text-green-300 text-sm rounded p-6">
+@import "tailwindcss";
+@theme {
+  --text-tamanno1: 1.2rem;
+  --text-tamanno2: 1.3rem;
+  --text-tamanno3: 1.5rem;
+}
+      </pre>
+      <p class="text-md text-gray-600 dark:text-gray-400">Ejemplo: <span class="text-tamanno3">Texto con tamaño de letra 3</span></p>
+    </section>
+
+    <!-- Tipo de letra -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-semibold text-blue-600 dark:text-blue-400">3. Tipo de letra</h3>
+      <p>Agrega fuentes para títulos, textos y código</p>
+      <pre class="bg-gray-900 text-green-300 text-sm rounded p-6">
+@import "tailwindcss";
+@theme {
+  --font-tipoLetra1: "Inter", sans-serif;
+  --font-tipoLetra2: "Merriweather", serif;
+  --font-tipoLetra3: "Courier New", monospace;
+}
+      </pre>
+      <p class="text-md text-gray-600 dark:text-gray-400">Ejemplo: <span class="font-tipoLetra1">Texto con fuente Inter</span></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

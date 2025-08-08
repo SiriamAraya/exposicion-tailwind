@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instalar Tailwind CSS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="style.css" rel="stylesheet"/> 
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
 </head>
 
 <body class="bg-gray-100 text-gray-900">
 
   <!-- Header -->
-  <header class="bg-blue-600 text-white py-4 shadow-md">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-3xl font-bold">Instalar Tailwind CSS</h1>
-      <nav>
-        <ul class="flex gap-8">
-         <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
-          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
-          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
-          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
-          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
-          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
-          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
-        </ul>
-      </nav>
+<nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+    </a>
+
+    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú principal</span>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<nav class="bg-gray-50 dark:bg-gray-700">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+
+    <div id="menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+        <li><a href="queEs.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué es?</a></li>
+        <li><a href="porqueUsar.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por qué usarlo?</a></li>
+        <li><a href="instalacion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a></li>
+        <li><a href="tema-oscuro.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema Oscuro</a></li>
+        <li><a href="configuracion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración de paletas</a></li>
+        <li><a href="layout.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a></li>
+        <li><a href="Componentes.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('hidden');
+  });
+</script>
 
   <!-- Instalación -->
   <main class="py-16 px-6 md:px-12">
@@ -35,88 +60,151 @@
       <h2 class="text-3xl font-semibold text-gray-800 mb-4">Métodos de instalación</h2>
       <p class="text-lg text-gray-600 mb-6">Elige el método que mejor se adapte a tu proyecto:</p>
 
-      <!-- Instalación con npm -->
-      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold text-green-600">Con npm</h3>
-        <p class="text-gray-600 mb-4">Ideal para proyectos modernos con herramientas como Vite, Webpack o Next.js.</p>
-        <pre class="bg-gray-900 text-green-400 text-sm rounded p-6 overflow-x-auto">
-npm install -D tailwindcss
-npx tailwindcss init
-        </pre>
-        <button class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">¡Usar npm!</button>
-      </div>
+<!-- Instalación con Vite Plugin -->
+<div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+  <h3 class="text-2xl font-semibold text-green-600">1. Vite Plugin</h3>
+  <p class="text-gray-600 mb-4 mt-2">Usa el plugin de Tailwind con Vite para proyectos modernos con frameworks como React, Vue, Svelte o Laravel.</p>
+  <pre class="bg-gray-900 text-green-300 text-sm rounded p-6 overflow-x-auto">
+npm create vite@latest my-project
+cd my-project
 
-      <!-- Instalación con CDN -->
-      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold text-yellow-600">Con CDN</h3>
-        <p class="text-gray-600 mb-4">Para pruebas rápidas sin configuración.</p>
-        <pre class="bg-gray-900 text-yellow-400 text-sm rounded p-6 overflow-x-auto">
-&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
-        </pre>
-        <button class="mt-4 bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition duration-300">Usar CDN</button>
-      </div>
+npm install tailwindcss @tailwindcss/vite
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Agrega el plugin en <code>vite.config.ts</code></p>
+  <pre class="bg-gray-900 text-green-300 text-sm rounded p-6 overflow-x-auto">
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
 
-      <!-- Instalación con CLI -->
-      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold text-purple-600">Con CLI</h3>
-        <p class="text-gray-600 mb-4">Útil para quienes no quieren usar herramientas externas. Sólo necesitas configurar un archivo CSS</p>
-        <pre class="bg-gray-900 text-purple-300 text-sm rounded p-6 overflow-x-auto">
-npx tailwindcss -i ./input.css -o ./output.css --watch
-        </pre>
-        <button class="mt-4 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">Usar CLI</button>
-      </div>
+export default defineConfig({
+  plugins: [tailwindcss()],
+})
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Importa Tailwind en tu archivo CSS:</p>
+  <pre class="bg-gray-900 text-green-300 text-sm rounded p-6 overflow-x-auto">
+@import "tailwindcss";
+  </pre>
+  <a href="https://tailwindcss.com/docs/installation/using-vite" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">Documentación Vite Plugin</a>
+</div>
 
-      <!-- Instalación con CLI -->
-      <div class="mb-6 bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-        <h3 class="text-2xl font-semibold text-blue-600">Con Frameworks & CMS</h3>
-        <p class="text-gray-600 mb-4">Tailwind se integra fácilmente con Laravel, Nuxt, WordPress y más</p>
+<!-- Instalación con PostCSS Plugin -->
+<div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+  <h3 class="text-2xl font-semibold text-yellow-600">2. PostCSS Plugin</h3>
+  <p class="text-gray-600 mb-4 mt-2">Ideal si tu proyecto ya usa PostCSS (como en Next.js o Angular). Tailwind se integra como plugin de PostCSS.</p>
+  <pre class="bg-gray-900 text-yellow-300 text-sm rounded p-6 overflow-x-auto">
+npm install tailwindcss @tailwindcss/postcss postcss
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Agrega el plugin en <code>postcss.config.mjs</code>:</p>
+  <pre class="bg-gray-900 text-yellow-300 text-sm rounded p-6 overflow-x-auto">
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  }
+}
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Importa Tailwind en tu CSS:</p>
+  <pre class="bg-gray-900 text-yellow-300 text-sm rounded p-6 overflow-x-auto">
+@import "tailwindcss";
+  </pre>
+  <a href="https://tailwindcss.com/docs/installation/using-postcss" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition duration-300">Documentación PostCSS Plugin</a>
+</div>
+
+<!-- Instalación con CLI Tool -->
+<div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+  <h3 class="text-2xl font-semibold text-purple-600">3. CLI Tool</h3>
+  <p class="text-gray-600 mb-4 mt-2">Instala Tailwind como herramienta de línea de comandos. Ideal para proyectos pequeños o sin framework.</p>
+  <pre class="bg-gray-900 text-purple-300 text-sm rounded p-6 overflow-x-auto">
+npm install tailwindcss @tailwindcss/cli
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Crea un archivo <code>src/input.css</code> con:</p>
+  <pre class="bg-gray-900 text-purple-300 text-sm rounded p-6 overflow-x-auto">
+@import "tailwindcss";
+  </pre>
+  <p class="text-gray-600 mb-4 mt-4">Genera tu archivo CSS compilado:</p>
+  <pre class="bg-gray-900 text-purple-300 text-sm rounded p-6 overflow-x-auto">
+npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+  </pre>
+  <a href="https://tailwindcss.com/docs/installation/tailwind-cli" class="mt-4 inline-block bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">Documentación CLI Tool</a>
+</div>
+
+
+      <!-- Instalación con Play CDN -->
+      <div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <h3 class="text-2xl font-semibold text-blue-600">4. Play CDN</h3>
+        <p class="text-gray-600 mb-4 mt-2">No instalas nada. Solo agregas un &lt;script&gt; a tu HTML y puedes empezar a usar clases de Tailwind directamente</p>
         <pre class="bg-gray-900 text-blue-300 text-sm rounded p-6 overflow-x-auto">
-composer require laravel-frontend-presets/tailwindcss npm install && npm run dev
+&lt;script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"&gt;&lt;/script&gt;
         </pre>
-        <button class="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Usar CLI</button>
+        <h4 class="text-gray-600 mb-4 mt-4">También puedes usar estilos personalizados con &lt;style&gt; type="text/tailwindcss&lt;/style&gt;</h4>
+        <pre class="bg-gray-900 text-blue-300 text-sm rounded p-6 overflow-x-auto">
+&lt;style&gt; type="text/tailwindcss&lt;/style&gt;
+        </pre>
+        <a href="https://tailwindcss.com/docs/installation/play-cdn" class="mt-4 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Documentación para usar con Play CDN</a>
       </div>
 
-      <!--Instalación con Node.js -->
-  <div class="mb-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition">
-    <h3 class="text-2xl font-semibold text-green-600 dark:text-green-400">Con Node.js</h3>
-    <p class="text-gray-700 dark:text-gray-300 mb-4">
-      Recomendado para desarrollos profesionales con herramientas modernas como Vite, Webpack o Next.js.
-    </p>
-
-    <ol class="list-decimal pl-6 space-y-3 text-gray-800 dark:text-gray-300">
-      <li>Instala Tailwind vía npm:
-        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
-npm install -D tailwindcss
-npx tailwindcss init
-        </pre>
-      </li>
-
-      <li>Configura el archivo <code class="bg-gray-100 dark:bg-gray-700 px-1 rounded">tailwind.config.js</code> según tus preferencias.</li>
-
-      <li>Crea tu archivo CSS:
-        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
-/* styles.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-        </pre>
-      </li>
-
-      <li>Compila el CSS con CLI:
-        <pre class="bg-gray-900 text-green-400 text-sm rounded p-4 overflow-x-auto mt-2">
-npx tailwindcss -i ./styles.css -o ./output.css --watch
-        </pre>
-      </li>
-    </ol>
-
-    <button class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">
-      Instalar con Node.js
-    </button>
-  </div>
-</section>
-
+  <section class=" bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+    <h3 class="text-2xl font-semibold">¿Cuál método utilizar?</h3>
+<table class="mt-2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Método
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Facilidad
+        </th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Ideal para
+        </th>
+      </tr>
+      </thead>
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm font-medium text-gray-900">Play CDN</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">⭐⭐⭐⭐⭐</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">Probar Tailwind rápidamente, sin instalar nada.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm font-medium text-gray-900">CLI</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">⭐⭐⭐⭐</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">Proyectos pequeños o si quieres control básico.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm font-medium text-gray-900">Vite</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">⭐⭐⭐</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">Proyectos modernos con frameworks.</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm font-medium text-gray-900">PostCSS</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">⭐⭐</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-500">Proyectos grandes ya configurados con PostCSS.</div>
+        </td>
+      </tr>
+  </table>
+  </section>
+</main>
   <!-- Footer -->
-  <footer class="bg-blue-600 text-white py-6">
+  <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
     <div class="max-w-7xl mx-auto text-center">
       <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
     </div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demostración de Modo Oscuro con Tailwind CSS</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans leading-relaxed transition-colors duration-300 dark:bg-gray-900 dark:text-white">
+
+    <header class="bg-blue-600 text-white py-6 shadow-md">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between ">
+            <a href="#" class="hover:scale-105 transition-transform"><h1 class="text-4xl font-extrabold">Introducción a Tailwind CSS</h1></a>
+        </div>
+    </header>
+
+    <main class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-semibold text-gray-800 dark:text-white mb-4">Demostración de Tema Oscuro</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
+                Elige entre el modo de control manual con botón o el modo automático según tu sistema.
+            </p>
+        </div>
+
+        <section id="manual-mode" class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">🌓 Opción 1: Modo Manual (con botón)</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Esta sección está controlada por un botón. Puedes alternar el tema oscuro y claro presionando el botón de abajo. Esta es la forma más común de dar control al usuario.
+            </p>
+            <div class="text-center">
+                <button
+                    onclick="document.documentElement.classList.toggle('dark')"
+                    class="bg-blue-600 dark:bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-300 font-semibold shadow"
+                    aria-label="Cambiar modo oscuro"
+                >
+                    Cambiar Modo Manual
+                </button>
+            </div>
+        </section>
+
+        <section id="automatic-mode" class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">🌘 Opción 2: Modo Automático (según tu sistema)</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Esta sección se adapta automáticamente a la configuración de tema de tu sistema operativo. Si tu sistema está en modo oscuro, verás los estilos oscuros; si está en modo claro, verás los claros. Para ver la diferencia, cambia la configuración de tu sistema operativo.
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

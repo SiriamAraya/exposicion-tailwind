@@ -1,138 +1,159 @@
 <!DOCTYPE html>
 <html lang="es" class="">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modo Oscuro con Tailwind CSS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modo Oscuro con Tailwind CSS</title>
+    <link rel="stylesheet" href="style.css"/>
+
+    <script>
+        document.documentElement.classList.toggle(
+            "dark",
+            localStorage.theme === "dark" ||
+            (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+        );
+    </script>
 </head>
 
-<body
-  class="bg-gray-100 text-gray-900 font-sans leading-relaxed transition-colors duration-300"
-  x-data="{ darkMode: false }"
-  x-init="$watch('darkMode', value => {
-    if(value) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.remove('bg-gray-100', 'text-gray-900');
-      document.body.classList.add('bg-gray-900', 'text-gray-100');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('bg-gray-900', 'text-gray-100');
-      document.body.classList.add('bg-gray-100', 'text-gray-900');
-    }
-  })"
-  :class="darkMode ? 'dark' : ''"
->
+<body class="bg-gray-100 text-gray-900 font-sans leading-relaxed transition-colors duration-300 dark:bg-gray-900 dark:text-white">
+<nav class="bg-blue-600 border-gray-200">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+    </a>
 
-  <!-- Header -->
-  <header class="bg-blue-600 dark:bg-blue-800 text-white py-5 shadow-md">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
-      <h1 class="text-3xl font-bold tracking-tight">Modo Oscuro con Tailwind</h1>
-      <nav>
-        <ul class="flex gap-8 text-lg font-medium">
-         <li><a href="index.html" class="hover:text-blue-300">Portada</a></li>
-          <li><a href="queEs.html" class="hover:text-blue-300">¿Qué es?</a></li>
-          <li><a href="porqueUsar.html" class="hover:text-blue-300">¿Porque Usarlo?</a></li>
-          <li><a href="instalacion.html" class="hover:text-blue-300">Instalación</a></li>
-          <li><a href="tema-oscuro.html" class="hover:text-blue-300">Tema Oscuro</a></li>
-          <li><a href="ejemplos.html" class="hover:text-blue-300">Ejemplos</a></li>
-          <li><a href="formulario.html" class="hover:text-blue-300">Personaliza</a></li>
-      </nav>
+    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú principal</span>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<nav class="bg-gray-50 dark:bg-gray-700">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+
+    <div id="menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+        <li><a href="queEs.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué es?</a></li>
+        <li><a href="porqueUsar.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por qué usarlo?</a></li>
+        <li><a href="instalacion.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a></li>
+        <li><a href="tema-oscuro.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema Oscuro</a></li>
+        <li><a href="configuracion.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración de paletas</a></li>
+        <li><a href="layout.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a></li>
+        <li><a href="Componentes.html" class="hover:text-blue-700 hover:bg-gray-300 dark:hover:bg-gray-800 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a></li>
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <!-- Modo Oscuro -->
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('hidden');
+  });
+</script>
   <main class="py-16 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Activar Modo Oscuro</h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
-        Haga clic en el interruptor para cambiar entre el modo oscuro y claro.
-      </p>
-      <button
-        @click="darkMode = !darkMode"
-        class="bg-blue-600 dark:bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition duration-300 font-semibold shadow"
-        aria-label="Cambiar modo oscuro"
-      >
-        Cambiar Modo
-      </button>
-    </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-semibold text-gray-800 dark:text-white mb-4">Tema Oscuro</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
+            Elige entre el modo de control manual con botón o el modo automático según tu sistema.
+          </p>
+      </div>
 
-    <section id="tema-oscuro" class="max-w-4xl mx-auto space-y-8">
-      <h2 class="text-4xl font-semibold mb-4 text-primary dark:text-secondary">¿Cómo hacer un tema oscuro en TailwindCSS?</h2>
-      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-        Activar el modo oscuro con Tailwind CSS es súper fácil y elegante! Puedes hacer que tu sitio cambie automáticamente según la preferencia del sistema del usuario o controlarlo manualmente. Aquí te explico ambas formas:
-      </p>
-
-      <h3 class="text-2xl font-semibold mb-2 text-primary dark:text-secondary">🌓 Opción 1: Modo automático (según el sistema del usuario)</h3>
-      <p class="text-gray-700 dark:text-gray-300">
-        Configura Tailwind para usar modo oscuro. En tu archivo <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">tailwind.config.js</code>, agrega esta línea:
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
-module.exports = {
-  darkMode: 'media', // usa 'media' para seguir la preferencia del sistema
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-      </pre>
-      <p class="text-gray-700 dark:text-gray-300">
-        Aplica clases <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark:</code> en tus estilos. Tailwind usará estas clases cuando el modo oscuro esté activo:
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-6 font-mono shadow-inner">
-&lt;div class="bg-white text-black dark:bg-gray-900 dark:text-white p-4 rounded"&gt;
-  ¡Hola en modo oscuro!
+<section class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+  <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Variante `dark`</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    Tailwind incluye una variante llamada `dark` que permite diseñar el estilo de la página cuando el modo oscuro este activo
+  </p>
+<div class="bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
+  <p class="bg-gray-300 text-black dark:text-white dark:bg-gray-600 p-2 text-lg text-center">Ejemplo</p>
+    <pre class="bg-gray-900 text-white text-sm rounded p-6 overflow-x-auto">
+&lt;div class="<span class="text-yellow-500">bg-white</span> <span class="text-blue-500">dark:bg-gray-800</span> rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5"&gt;
+  &lt;p class="<span class="text-yellow-500">bg-gray-300 text-black</span> <span class="text-blue-500">dark:bg-gray-600 dark:text-white</span> p-2 text-lg text-center"&gt;Ejemplo&lt;/p&gt;
 &lt;/div&gt;
-      </pre>
+  </pre>
+</div>
+</section>
 
-      <h3 class="text-2xl font-semibold mb-2 text-primary dark:text-secondary">🌘 Opción 2: Control manual con clase <code>dark</code></h3>
-      <p class="text-gray-700 dark:text-gray-300">
-        Configura Tailwind para usar clase <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark</code>. En <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">tailwind.config.js</code>:
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
-module.exports = {
-  darkMode: 'class', // activa modo oscuro con la clase "dark"
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-      </pre>
-      <p class="text-gray-700 dark:text-gray-300">
-        Aplica la clase <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark</code> a un elemento raíz (por ejemplo, <code>&lt;html&gt;</code> o <code>&lt;body&gt;</code>):
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-4 font-mono shadow-inner">
-&lt;html class="dark"&gt;
-  ...
-&lt;/html&gt;
-      </pre>
-      <p class="text-gray-700 dark:text-gray-300">
-        Usa clases condicionales <code class="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded">dark:</code> en tu HTML:
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 mb-6 font-mono shadow-inner">
-&lt;div class="bg-gray-100 text-black dark:bg-gray-800 dark:text-white p-4 rounded"&gt;
-  ¡Contenido adaptable al tema!
-&lt;/div&gt;
-      </pre>
+<section id="manual-mode" class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+  <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Activar y desactivar el modo oscuro manualmente</h3>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    Las utilidades se aplicacan cada vez que la clase <code>dark</code> se añade al elemento <code>&lt;html&gt;</code>. Puedes alternar el modo oscuro manualmente con un botón
+  </p>
+  <div class="text-center space-x-4">
+    <button id="btn-claro" class="bg-gray-300 text-black px-6 py-2 rounded hover:bg-gray-400 font-semibold transition">Claro</button>
+    <button id="btn-oscuro" class="bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-600 font-semibold transition">Oscuro</button>
+  </div>
+</section>
 
-      <p class="text-gray-700 dark:text-gray-300">
-        Agrega un botón para cambiar entre temas usando JavaScript:
-      </p>
-      <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto overflow-auto text-sm text-gray-900 dark:text-gray-100 font-mono shadow-inner">
-&lt;button onclick="document.documentElement.classList.toggle('dark')"&gt;
-  Cambiar tema
-&lt;/button&gt;
-      </pre>
-    </section>
+<section id="data-attribute-mode" class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+  <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Uso de un atributo de datos</h3>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    También puedes controlar el modo oscuro usando un atributo en lugar de una clase.
+    Por ejemplo, estableciendo <code>data-theme="dark"</code> en la etiqueta <code>&lt;html&gt;</code>, las utilidades <code>dark</code>
+  </p>
+  <div class="text-center space-x-4">
+    <button id="btn-data-claro" class="bg-gray-300 text-black px-6 py-2 rounded hover:bg-gray-400 font-semibold transition">Claro</button>
+    <button id="btn-data-oscuro" class="bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-600 font-semibold transition">Oscuro</button>
+  </div>
+</section>
+
+
+      <section id="automatic-mode" class="max-w-4xl mx-auto space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Con soporte para temas del sistema</h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                También puedes que se adapte automáticamente a la configuración del tema del sistema operativo. Si tu sistema está en modo oscuro, verás los estilos oscuros; si está en modo claro, verás los claros. Para ver la diferencia, cambia la configuración de tu sistema operativo.
+            </p>
+          <div class="text-center space-x-4">
+            <button id="btn-automatico" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 font-semibold transition">Automático</button>
+          </div>
+      </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-blue-600 dark:bg-blue-700 text-white py-6 mt-12">
-    <div class="max-w-7xl mx-auto text-center text-sm select-none">
-      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+    <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('btn-claro').addEventListener('click', () => {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        });
 
+        document.getElementById('btn-oscuro').addEventListener('click', () => {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        });
+
+        document.getElementById('btn-automatico').addEventListener('click', () => {
+            localStorage.removeItem('theme');
+            location.reload();
+        });
+    </script>
+<!--     <script>
+  const htmlTag = document.documentElement;
+
+  document.getElementById('btn-data-claro').addEventListener('click', () => {
+    htmlTag.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+  });
+
+  document.getElementById('btn-data-oscuro').addEventListener('click', () => {
+    htmlTag.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  });
+
+  // Al cargar, aplicamos el tema guardado si existe
+  if (localStorage.getItem('theme')) {
+    htmlTag.setAttribute('data-theme', localStorage.getItem('theme'));
+  }
+</script> -->
 </body>
 </html>

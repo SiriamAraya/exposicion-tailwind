@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));  */
+
+@theme {
+
+  --color-primario: #6200ee;
+  --color-primario-dark: rgb(98, 0, 238);
+  --color-secundario: rgba(255, 0, 150, 0.8);
+
+  --text-tamanno1: 1.2rem;
+  --text-tamanno2: 1.3rem;
+  --text-tamanno3: 1.5rem;
+
+  --font-tipoLetra1: "Inter", sans-serif;
+  --font-tipoLetra2: "Merriweather", serif;
+  --font-tipoLetra3: "Courier New", monospace;
+}

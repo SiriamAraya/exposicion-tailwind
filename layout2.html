@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Interactivo - Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white p-6 transition-colors duration-300">
+
+  <h1 class="text-3xl font-bold mb-8 text-center">Layout en Tailwind CSS - Ejemplos Interactivos</h1>
+
+  <!-- 1. Containers -->
+  <section class="mb-12 bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">1. Containers</h2>
+    <p class="mb-4">
+      El contenedor <code>container</code> centra el contenido y ajusta su ancho según el tamaño de la pantalla para mantener una lectura cómoda. Es útil para limitar el ancho máximo y evitar que el contenido se expanda demasiado en pantallas grandes.
+    </p>
+    <div class="flex gap-4 mb-4 flex-wrap">
+      <button
+        onclick="setContainer('container')"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition"
+      >Container (ancho máximo)</button>
+      <button
+        onclick="setContainer('max-w-full')"
+        class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded transition"
+      >Ancho completo (full width)</button>
+      <button
+        onclick="setContainer('max-w-2xl')"
+        class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition"
+      >Ancho limitado (max-w-2xl)</button>
+    </div>
+    <div
+      id="containerPreview"
+      class="container bg-yellow-200 p-6 rounded border border-yellow-400 dark:bg-yellow-900 dark:border-yellow-700 transition-all duration-300"
+    >
+      <p class="text-center font-semibold">Este es un contenedor que cambia su ancho según la clase aplicada.</p>
+      <p class="text-center text-sm mt-1 text-yellow-900 dark:text-yellow-300">Prueba cambiar su tamaño con los botones arriba</p>
+    </div>
+  </section>
+
+  <!-- 2. Grid -->
+  <section class="mb-12 bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">2. Grid</h2>
+    <p class="mb-4">
+      El sistema de <code>grid</code> permite dividir el espacio en filas y columnas fácilmente. Puedes controlar la cantidad de columnas con clases como <code>grid-cols-2</code>, <code>grid-cols-3</code>, etc. El espaciado entre celdas se controla con <code>gap-*</code>.
+    </p>
+    <div class="flex gap-4 mb-4 flex-wrap">
+      <button
+        onclick="setGrid('grid-cols-2')"
+        class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded transition"
+      >2 Columnas</button>
+      <button
+        onclick="setGrid('grid-cols-3')"
+        class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded transition"
+      >3 Columnas</button>
+      <button
+        onclick="setGrid('grid-cols-4')"
+        class="px-4 py-2 bg-purple-800 hover:bg-purple-900 text-white rounded transition"
+      >4 Columnas</button>
+    </div>
+    <div id="gridPreview" class="grid grid-cols-3 gap-4 transition-all duration-300">
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">1</div>
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">2</div>
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">3</div>
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">4</div>
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">5</div>
+      <div class="bg-red-400 p-6 rounded shadow text-white font-bold text-center">6</div>
+    </div>
+  </section>
+
+  <!-- 3. Flexbox -->
+  <section class="mb-12 bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">3. Flexbox</h2>
+    <p class="mb-4">
+      Flexbox es un sistema de diseño flexible que permite alinear y distribuir elementos dentro de un contenedor. Cambia la dirección con <code>flex-row</code> o <code>flex-col</code> y la alineación con <code>justify-*</code> y <code>items-*</code>.
+    </p>
+    <div class="flex gap-4 mb-4 flex-wrap">
+      <button
+        onclick="setFlex('flex-row')"
+        class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded transition"
+      >Fila (flex-row)</button>
+      <button
+        onclick="setFlex('flex-col')"
+        class="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 text-white rounded transition"
+      >Columna (flex-col)</button>
+      <button
+        onclick="setFlex('flex-row justify-center items-center')"
+        class="px-4 py-2 bg-indigo-800 hover:bg-indigo-900 text-white rounded transition"
+      >Centrado (fila)</button>
+    </div>
+    <div
+      id="flexPreview"
+      class="flex flex-row gap-4 bg-green-300 p-4 rounded transition-all duration-300"
+      style="height: 150px;"
+    >
+      <div class="bg-green-700 text-white p-6 rounded shadow flex items-center justify-center w-20 h-20 font-bold">A</div>
+      <div class="bg-green-700 text-white p-6 rounded shadow flex items-center justify-center w-20 h-20 font-bold">B</div>
+      <div class="bg-green-700 text-white p-6 rounded shadow flex items-center justify-center w-20 h-20 font-bold">C</div>
+    </div>
+  </section>
+
+  <!-- 4. Spacing -->
+  <section class="mb-12 bg-white dark:bg-gray-800 p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">4. Spacing</h2>
+    <p class="mb-4">
+      El espaciado (spacing) es fundamental para la separación visual. Tailwind usa clases como <code>p-4</code> (padding) y <code>m-4</code> (margin). También puedes controlar la separación entre elementos con <code>gap-*</code>.
+    </p>
+    <div class="flex gap-4 mb-4 flex-wrap">
+      <button
+        onclick="setSpacing('p-2 gap-2')"
+        class="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded transition"
+      >Espaciado Pequeño</button>
+      <button
+        onclick="setSpacing('p-6 gap-6')"
+        class="px-4 py-2 bg-teal-700 hover:bg-teal-800 text-white rounded transition"
+      >Espaciado Grande</button>
+    </div>
+    <div
+      id="spacingPreview"
+      class="flex p-4 gap-4 bg-pink-200 rounded transition-all duration-300"
+      style="min-height: 100px;"
+    >
+      <div class="bg-pink-400 p-4 rounded shadow font-bold flex items-center justify-center w-16 h-16">1</div>
+      <div class="bg-pink-400 p-4 rounded shadow font-bold flex items-center justify-center w-16 h-16">2</div>
+      <div class="bg-pink-400 p-4 rounded shadow font-bold flex items-center justify-center w-16 h-16">3</div>
+    </div>
+  </section>
+
+  <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg text-center">
+    <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function setContainer(clase) {
+      const cont = document.getElementById("containerPreview");
+      // Limpiar clases relacionadas para evitar conflictos
+      cont.className = "bg-yellow-200 p-6 rounded border border-yellow-400 dark:bg-yellow-900 dark:border-yellow-700 transition-all duration-300";
+      // Agregar la clase elegida
+      cont.classList.add(clase);
+    }
+
+    function setGrid(cols) {
+      const grid = document.getElementById("gridPreview");
+      grid.className = "grid " + cols + " gap-4 transition-all duration-300";
+    }
+
+    function setFlex(clase) {
+      const flex = document.getElementById("flexPreview");
+      flex.className = "flex " + clase + " bg-green-300 p-4 rounded transition-all duration-300";
+    }
+
+    function setSpacing(clase) {
+      const spacing = document.getElementById("spacingPreview");
+      spacing.className = "flex " + clase + " bg-pink-200 rounded transition-all duration-300";
+    }
+  </script>
+
+</body>
+</html>

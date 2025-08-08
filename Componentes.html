@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Componentes o elementos</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+
+  <!-- Header -->
+<nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+    </a>
+
+    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú principal</span>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+<nav class="bg-gray-50 dark:bg-gray-700">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+
+    <div id="menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+        <li><a href="queEs.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué es?</a></li>
+        <li><a href="porqueUsar.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por qué usarlo?</a></li>
+        <li><a href="instalacion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a></li>
+        <li><a href="tema-oscuro.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema Oscuro</a></li>
+        <li><a href="configuracion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración de paletas</a></li>
+        <li><a href="layout.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a></li>
+        <li><a href="formulario.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+  <!-- Main Content -->
+  <main class="py-16 px-6 md:px-12">
+    <h2 class="text-center p-4 max-w-3xl mx-auto mb-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow text-2xl">
+      Componentes o elementos 
+    </h2>
+
+    <!-- Buttons -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12 text-center">
+        <h3>Botones</h3>
+<button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Dark</button>
+<button type="button" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Alternative</button>
+<button type="button" class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Red to Yellow</button>
+<button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+Teal to Lime
+</span>
+</button>
+<button type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Purple</button>
+<button type="button" class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2">
+<svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+<path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+</svg>
+Sign in with Facebook
+</button>
+<button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Red</button>
+<button type="button" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Extra small</button>
+<button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Small</button>
+<button type="button" class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Base</button>
+<button type="button" class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Large</button>
+<button type="button" class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Extra large</button>
+
+<button type="button" class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500">
+<svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+<path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z"/>
+</svg>
+<span class="sr-only">Icon description</span>
+</button>
+<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+</svg>
+Buy now
+</button>
+<button type="button" class="text-white bg-blue-400 dark:bg-blue-500 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>Disabled button</button>
+
+
+          <h3 class="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">Botones</h3>
+          <div class="inline-flex gap-6">
+            <button class="bg-blue-700 text-white font-semibold py-3 px-8 rounded shadow transition-colors duration-300 hover:bg-blue-600">Primario</button>
+            <button class="bg-indigo-400 text-gray-900 font-semibold py-3 px-8 rounded shadow transition-colors duration-300 hover:bg-indigo-300">Secundario</button>
+            <button class="bg-yellow-300 text-gray-900 font-semibold py-3 px-8 rounded shadow transition-colors duration-300 hover:bg-yellow-200">Accent</button>
+          </div>
+
+    </section>
+
+    <!-- Lista de elementos -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+          <h3 class="text-2xl font-semibold mb-5 text-gray-900 dark:text-gray-100">Lista de elementos</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+            <li class="hover:bg-blue-700 hover:text-white cursor-pointer rounded px-2 transition">Elemento uno</li>
+            <li class="hover:bg-indigo-400 hover:text-gray-900 cursor-pointer rounded px-2 transition">Elemento dos</li>
+            <li class="hover:bg-yellow-300 hover:text-gray-900 cursor-pointer rounded px-2 transition">Elemento tres</li>
+            <li class="hover:bg-blue-700 hover:text-white cursor-pointer rounded px-2 transition">Elemento cuatro</li>
+          </ul>
+    </section>
+
+    <!-- Navbar -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+          <h3 class="text-2xl font-semibold mb-5 text-gray-900 dark:text-gray-100">Navbar</h3>
+          <nav class="bg-blue-700 rounded-md p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 text-white">
+            <a href="#" class="text-xl font-bold tracking-wide hover:underline">Navbar</a>
+            <ul class="flex flex-wrap gap-6 sm:gap-8 uppercase font-medium text-sm">
+              <li><a href="#" class="hover:text-blue-300 transition">Inicio</a></li>
+              <li><a href="#" class="hover:text-blue-300 transition">Servicios</a></li>
+              <li><a href="#" class="hover:text-blue-300 transition">Contacto</a></li>
+            </ul>
+            <button class="bg-indigo-400 px-4 py-2 rounded-md hover:bg-indigo-300 transition font-semibold text-gray-900">Botón</button>
+          </nav>
+    </section>
+
+        <!-- Dropdown -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+        
+<button id="multiLevelDropdownButton" data-dropdown-toggle="multi-dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown button <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+</svg>
+</button>
+
+<!-- Dropdown menu -->
+<div id="multi-dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+      </li>
+      <li>
+        <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dropdown<svg class="w-2.5 h-2.5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+  </svg></button>
+          <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Overview</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My downloads</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Billing</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Rewards</a>
+              </li>
+            </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+      </li>
+      <li>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+      </li>
+    </ul>
+</div>
+    </section>
+
+            <!-- Formularios -->
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12">
+      <h2 class="text-3xl font-extrabold mb-6 text-gray-900 dark:text-gray-100 text-center">
+        Contáctanos
+      </h2>
+      <form action="#" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="block mb-2 font-semibold text-gray-700 dark:text-gray-300">Nombre</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Tu nombre"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-900 dark:text-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block mb-2 font-semibold text-gray-700 dark:text-gray-300">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="tu@email.com"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-900 dark:text-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block mb-2 font-semibold text-gray-700 dark:text-gray-300">Mensaje</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Escribe tu mensaje aquí..."
+            class="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-900 dark:text-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 resize-none"
+          ></textarea>
+        </div>
+
+        <div class="text-center">
+          <button
+            type="submit"
+            class="bg-blue-700 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded shadow transition"
+          >
+            Enviar
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

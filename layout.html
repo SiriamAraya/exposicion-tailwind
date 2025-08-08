@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalar Tailwind CSS</title>
+  <link href="style.css" rel="stylesheet"/> 
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+<nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+    </a>
+    <!-- Botón hamburguesa visible solo en md:hidden -->
+    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú principal</span>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<nav class="bg-gray-50 dark:bg-gray-700">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+    <!-- Aquí el menú que será toggleable -->
+    <div id="menu" class="hidden md:block">
+      <ul class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+        <li><a href="queEs.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué es?</a></li>
+        <li><a href="porqueUsar.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por qué usarlo?</a></li>
+        <li><a href="instalacion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a></li>
+        <li><a href="tema-oscuro.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema Oscuro</a></li>
+        <li><a href="configuracion.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración de paletas</a></li>
+        <li><a href="layout.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a></li>
+        <li><a href="Componentes.html" class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuButton = document.getElementById('menu-button');
+  const menu = document.getElementById('menu');
+
+  menuButton.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('hidden');
+  });
+</script>
+
+  <h1 class="mt-4 text-3xl font-bold mb-8 text-center">Layout en Tailwind CSS - Ejemplos Interactivos</h1>
+  <main class="px-6 md:px-12">
+  <!-- 1. Containers -->
+  <section class="mb-12 bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">1. Containers</h2>
+    <p class="mb-4">El componente <code>container</code> centra el contenido según el ancho de la pantalla.</p>
+    <div class="flex gap-4 mb-4">
+      <button onclick="setContainer('container')" class="px-4 py-2 bg-blue-500 text-white rounded">Container</button>
+      <button onclick="setContainer('max-w-full')" class="px-4 py-2 bg-green-500 text-white rounded">Full Width</button>
+    </div>
+    <div id="containerPreview" class="container bg-yellow-200 p-4 rounded">
+      <p>Este es un ejemplo de contenedor centrado</p>
+    </div>
+  </section>
+
+  <!-- 2. Grid -->
+  <section class="mb-12 bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">2. Grid</h2>
+    <p class="mb-4">Puedes cambiar fácilmente la cantidad de columnas usando clases como <code>grid-cols-2</code>, <code>grid-cols-3</code>, etc.</p>
+    <div class="flex gap-4 mb-4">
+      <button onclick="setGrid('grid-cols-2')" class="px-4 py-2 bg-purple-500 text-white rounded">2 Columnas</button>
+      <button onclick="setGrid('grid-cols-3')" class="px-4 py-2 bg-purple-600 text-white rounded">3 Columnas</button>
+      <button onclick="setGrid('grid-cols-4')" class="px-4 py-2 bg-purple-700 text-white rounded">4 Columnas</button>
+    </div>
+    <div id="gridPreview" class="grid grid-cols-3 gap-4">
+      <div class="bg-red-300 p-4 rounded">1</div>
+      <div class="bg-red-300 p-4 rounded">2</div>
+      <div class="bg-red-300 p-4 rounded">3</div>
+      <div class="bg-red-300 p-4 rounded">4</div>
+      <div class="bg-red-300 p-4 rounded">5</div>
+      <div class="bg-red-300 p-4 rounded">6</div>
+    </div>
+  </section>
+
+  <!-- 3. Flexbox -->
+  <section class="mb-12 bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">3. Flexbox</h2>
+    <p class="mb-4">Usa <code>flex-row</code> o <code>flex-col</code> para cambiar la dirección y clases como <code>justify-center</code> para la alineación.</p>
+    <div class="flex gap-4 mb-4">
+      <button onclick="setFlex('flex-row')" class="px-4 py-2 bg-indigo-500 text-white rounded">Fila</button>
+      <button onclick="setFlex('flex-col')" class="px-4 py-2 bg-indigo-600 text-white rounded">Columna</button>
+      <button onclick="setFlex('flex-row justify-center')" class="px-4 py-2 bg-indigo-700 text-white rounded">Centrado</button>
+    </div>
+    <div id="flexPreview" class="flex flex-row gap-4">
+      <div class="bg-green-300 p-4 rounded">A</div>
+      <div class="bg-green-300 p-4 rounded">B</div>
+      <div class="bg-green-300 p-4 rounded">C</div>
+    </div>
+  </section>
+
+  <!-- 4. Spacing -->
+  <section class="mb-12 bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">4. Spacing</h2>
+    <p class="mb-4">El espaciado se controla con clases como <code>p-4</code> (padding) o <code>m-4</code> (margin).</p>
+    <div class="flex gap-4 mb-4">
+      <button onclick="setSpacing('p-2 gap-2')" class="px-4 py-2 bg-teal-500 text-white rounded">Espaciado Pequeño</button>
+      <button onclick="setSpacing('p-6 gap-6')" class="px-4 py-2 bg-teal-600 text-white rounded">Espaciado Grande</button>
+    </div>
+    <div id="spacingPreview" class="flex p-4 gap-4 bg-pink-200 rounded">
+      <div class="bg-pink-400 p-4 rounded">1</div>
+      <div class="bg-pink-400 p-4 rounded">2</div>
+      <div class="bg-pink-400 p-4 rounded">3</div>
+    </div>
+  </section>
+</main>
+    <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-6 mt-16 rounded-t-lg">
+    <div class="max-w-7xl mx-auto text-center">
+      <p>&copy; 2025 Tailwind CSS. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    function setContainer(clase) {
+      document.getElementById("containerPreview").className = clase + " bg-yellow-200 p-4 rounded";
+    }
+    function setGrid(cols) {
+      document.getElementById("gridPreview").className = "grid " + cols + " gap-4";
+    }
+    function setFlex(clase) {
+      document.getElementById("flexPreview").className = "flex " + clase + " gap-4";
+    }
+    function setSpacing(clase) {
+      document.getElementById("spacingPreview").className = "flex " + clase + " bg-pink-200 rounded";
+    }
+  </script>
+
+</body>
+</html>
