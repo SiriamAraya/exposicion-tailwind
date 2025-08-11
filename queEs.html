@@ -1,18 +1,20 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Introducción a Tailwind CSS</title>
-  <link href="style.css" rel="stylesheet"/> 
+  <link href="style.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.1/dist/cdn.min.js" defer></script>
-  <link rel="stylesheet" href="css/bootstrap.min.css" id="theme-link"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css" id="theme-link" />
+  <link rel="icon" type="image/png" href="img/tailwind.svg">
   <style>
     .page-transition {
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
+
     .page-transition-enter {
       opacity: 1;
     }
@@ -22,131 +24,209 @@
 <body class="bg-gray-100 text-gray-900">
 
   <!-- Header -->
-<nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
-  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-    <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
-      <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
-    </a>
+  <nav class="bg-blue-600 border-gray-200 dark:bg-gray-900">
+    <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+      <a href="index.html" class="hover:scale-105 transition-transform flex items-center space-x-3 rtl:space-x-reverse">
+        <span class="text-3xl md:text-4xl text-white font-extrabold">Introducción a Tailwind CSS</span>
+      </a>
 
-    <button id="menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white" aria-controls="menu" aria-expanded="false">
-      <span class="sr-only">Abrir menú principal</span>
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
-  </div>
-</nav>
+      <button id="menu-button" type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-md md:hidden hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white"
+        aria-controls="menu" aria-expanded="false">
+        <span class="sr-only">Abrir menú principal</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
 
-<nav class="bg-gray-50 dark:bg-gray-700">
-  <div class="max-w-screen-xl px-4 py-3 mx-auto">
+  <nav class="bg-gray-50 dark:bg-gray-700">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
 
-    <div id="menu" class="hidden md:block">
-                <ul
-                    class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
-                    <li><a href="queEs.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué
-                            es?</a></li>
-                    <li><a href="porqueUsar.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por
-                            qué usarlo?</a></li>
-                    <li><a href="instalacion.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a>
-                    </li>
-                    <li><a href="Comparacion.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Comparativa
-                            con CSS Clásico</a>
-                    </li>
-                    <li><a href="tema-oscuro.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema
-                            Oscuro</a></li>
-                    <li><a href="configuracion.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración
-                            de paletas</a></li>
-                    <li><a href="layout.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a>
-                    </li>
-                    <li><a href="Componentes.html"
-                            class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a>
-                    </li>
-                </ul>
-            </div>
-  </div>
-</nav>
-
-<script>
-  const menuButton = document.getElementById('menu-button');
-  const menu = document.getElementById('menu');
-
-  menuButton.addEventListener('click', () => {
-    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', !isExpanded);
-    menu.classList.toggle('hidden');
-  });
-</script>
-  <!-- Página principal -->
-  <main class="py-16 px-6 md:px-12">
-    <div class="max-w-7xl mx-auto text-center page-transition enter">
-  <h2 class="text-3xl font-semibold text-gray-800 mb-4">¿Qué es Tailwind CSS?</h2>
-  <p class="text-lg text-gray-600 mb-6">Tailwind CSS es un framework de diseño de código abierto basado en utilidades, que permite crear diseños personalizados de manera rápida y eficiente.</p>
-
-  <section class="max-w-6xl mx-auto px-4 text-center py-12">
-    <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-      Tailwind CSS te permite diseñar interfaces directamente desde el HTML. En lugar de escribir CSS desde cero, puedes aplicar clases como 
-      <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">flex</code>, 
-      <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">p-4</code>, 
-      <code class="bg-blue-500 text-white px-1 rounded">bg-blue-500</code>, entre otras, para desarrollar de forma rápida, ordenada y altamente personalizable.
-    </p>
-
-    <h3 class="text-2xl font-semibold mt-10 mb-4 text-primary dark:text-secondary">🚀 Características principales</h3>
-    <ul class="list-disc list-inside max-w-3xl mx-auto text-left text-gray-800 dark:text-gray-300 space-y-2">
-      <li><strong>Basado en utilidades:</strong> Cada clase aplica un único estilo, brindando control granular.</li>
-      <li><strong>Altamente personalizable:</strong> Puedes modificar el archivo <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">tailwind.config.js</code> según tus necesidades.</li>
-      <li><strong>Diseño responsive:</strong> Utiliza modificadores como <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">md:</code>, <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">lg:</code>, etc.</li>
-      <li><strong>CSS optimizado:</strong> Con herramientas como PurgeCSS, se eliminan clases no utilizadas para un archivo final ligero.</li>
-    </ul>
-
-    <h3 class="text-2xl font-semibold mt-10 mb-4 text-primary dark:text-secondary">💡 Ejemplo simple</h3>
-    <pre class="bg-yellow-50 dark:bg-gray-900 rounded-lg p-4 max-w-3xl mx-auto text-left overflow-auto text-sm text-gray-900 dark:text-gray-100">
-&lt;div class="bg-red-500 text-white text-center p-4"&gt;
-  ¡Hola desde Tailwind!
-&lt;/div&gt;
-    </pre>
-
-    <h3 class="text-2xl font-semibold mt-10 mb-4 text-primary dark:text-secondary">🎯 Ideal para</h3>
-    <ul class="list-disc list-inside max-w-3xl mx-auto text-left text-gray-800 dark:text-gray-300 space-y-2">
-      <li>Prototipos rápidos y funcionales</li>
-      <li>Equipos que prefieren estilos consistentes sin escribir CSS manual</li>
-      <li>Desarrolladores que quieren mantener el estilo en el mismo archivo que el HTML</li>
-    </ul>
-  </section>
-</div>
-
-
-      <div class="flex justify-center gap-8 mb-10">
-        <a href="instalacion.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Métodos de instalación</a>
-        <a href="ejemplos.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Ver ejemplos prácticos</a>
+      <div id="menu" class="hidden md:block">
+        <ul
+          class="flex flex-col md:flex-row font-medium mt-0 space-y-2 md:space-y-0 md:space-x-8 rtl:space-x-reverse text-sm text-gray-800 dark:text-gray-200">
+          <li><a href="queEs.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Qué
+              es?</a></li>
+          <li><a href="porqueUsar.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">¿Por
+              qué usarlo?</a></li>
+          <li><a href="instalacion.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Instalación</a>
+          </li>
+          <li><a href="Comparacion.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Comparativa
+              con CSS Clásico</a>
+          </li>
+          <li><a href="tema-oscuro.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Tema
+              Oscuro</a></li>
+          <li><a href="configuracion.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Configuración
+              de paletas</a></li>
+          <li><a href="layout.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Layout</a>
+          </li>
+          <li><a href="Componentes.html"
+              class="hover:text-blue-700 hover:bg-gray-300 p-2 rounded-2xl dark:hover:text-blue-400 transition-colors block">Componentes</a>
+          </li>
+        </ul>
       </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuButton = document.getElementById('menu-button');
+    const menu = document.getElementById('menu');
+
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Página principal -->
+  <main class="py-16 px-6 md:px-6">
+    <div class="max-w-7xl mx-auto text-center page-transition enter">
+      <img src="img/tailwind.svg" alt="" class="mx-auto mb-2 w-16 h-16 md:w-48 md:h-48" />
+      <h2 class="text-4xl font-extrabold mb-0 text-primary dark:text-secondary text-center">¿Que es Tailwind CSS?</h2>
+
+      <section class="max-w-6xl mx-auto px-2 text-justify py-6">
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+          Tailwind CSS es un framework de CSS basado en utilidades (utility-first) que te permite aplicar estilos
+          directamente en las clases del HTML,
+          sin escribir hojas de estilo largas y personalizadas. Además te permite diseñar interfaces directamente desde
+          el HTML. En lugar de escribir CSS
+          desde cero, puedes aplicar clases predefinidas que representan estilos específicos, lo que acelera el proceso
+          de desarrollo y mejora la consistencia visual de tus proyectos.
+        </p>
+
+        <h3 class="text-2xl font-semibold mt-10 mb-4 text-primary dark:text-secondary">Algunas Características
+          principales de Tailwind</h3>
+
+        <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12 text-left">
+          <h3 class="text-2xl text-blue-600 dark:text-blue-400">Basado en utilidades</h3>
+          <p class="mb-2">Cada clase aplica un único estilo, brindando control granular, eso significa que cada clase
+            posee
+            propiedades específicas, lo que te da control más preciso:</p>
+          <div>
+            <div>
+              <pre
+                class="bg-gray-900 text-green-300 text-sm rounded p-0 w-full max-w-full md:max-w-lg lg:max-w-2xl overflow-auto text-left">
+<code class="bg-gray-900 text-green-300 text-sm rounded p-4 block">
+&lt;button class="bg-blue-500 text-white p-4 rounded-lg"&gt;
+  Click aquí
+&lt;/button&gt;
+</code>
+</pre>
+
+              <p class="mt-2">Este es un botón de ejemplo utilizando Tailwind CSS y posee estas Características</p>
+              <ul class="list-disc list-inside">
+                <li>bg-blue-500>bg-blue-500 → color de fondo azul.</li>
+                <li>text-white → color de texto blanco.</li>
+                <li>p-4 → padding de 1rem (16px) en todos los lados.</li>
+                <li>rounded-lg → bordes redondeados.</li>
+              </ul>
+        </section>
+
+        <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12 text-left">
+          <h3 class="text-2xl text-blue-600 dark:text-blue-400">Altamente personalizable</h3>
+          <p class="mb-2">Puedes modificar el archivo tailwind.config.js según tus necesidades. Este archivo te permite
+            definir tus propios colores, fuentes, tamaños, etc. para que todo el equipo use los mismos valores.</p>
+          <div>
+            <div>
+              <h3 class="text-2xl text-blue-600 mb-2">tailwind.config.js</h3>
+              <pre
+                class="bg-gray-900 text-green-300 text-sm rounded p-6 w-full max-w-full md:max-w-lg lg:max-w-2xl overflow-auto text-left">
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: '#ff6600', // color corporativo
+      },
+      spacing: {
+        '72': '18rem',   // nuevo tamaño de margen/padding
+      }
+    }
+  }
+}
+</code>
+</pre>
+
+              <h3 class="text-2xl text-blue-600 mb-2 mt-2">Html</h3>
+              <pre
+                class="bg-gray-900 text-green-300 text-sm rounded p-6 w-full max-w-full md:max-w-lg lg:max-w-2xl overflow-auto text-left">
+<pre><code>
+&lt;div class="bg-brand p-72"&gt;
+  Caja con color corporativo y padding enorme
+&lt;/div&gt;
+</code></pre>
+              </pre>
+
+              <p class="mt-2">Estas propiedad puestas en el archivo tailwind.config.js se reflejan en el HTML de esta
+                manera:</p>
+              <ul class="list-disc list-inside">
+                <li>bg-brand aplica background-color: #ff6600.</li>
+                <li>p-72 aplica padding: 18rem en todos los lados.</li>
+              </ul>
+        </section>
 
 
+        <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12 text-left">
+          <h3 class="text-2xl text-blue-600 dark:text-blue-400">CSS optimizado</h3>
+          <p class="mb-2">A diferencia de Bootstrap, Tailwind crea un CSS más ligero y eficiente al eliminar estilos no
+            utilizados durante el proceso de construcción. Esto se configura en el archivo tailwind.config.js</p>
+          <p class="mb-2"><strong>Ejemplo</strong></p>
+          <p class="mb-2">Supongamos que tienes el siguiente HTML:</p>
+          <div>
+            <div>
+              <pre
+                class="bg-gray-900 text-green-300 text-sm rounded p-0 w-full max-w-full md:max-w-lg lg:max-w-2xl overflow-auto text-left">
+<code class="bg-gray-900 text-green-300 text-sm rounded p-4 block">
+&lt;button class="bg-red-500 p-4"&gt;Botón&lt;/button&gt;
+</code>
+</pre>
+
+              <p class="mt-2">Entonces el CSS final solo contendrá las clases bg-red-500 y p-4, ahorrando muchísimo
+                peso.</p>
+        </section>
+
+        <div class="flex justify-center gap-8 mb-10">
+          <a href="instalacion.html"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Métodos de
+            instalación</a>
+          <a href="ejemplos.html"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Ver ejemplos
+            prácticos</a>
+        </div>
+
+      </section>
 
       <!-- Video Introducción -->
-      <section class="mb-16">
-        <h3 class="text-2xl font-bold text-gray-700 mb-4">Introducción Visual</h3>
-        <div class="aspect-w-16 aspect-h-9">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/Td_3Am7t7bE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <section class="mb-10">
+        <h3 class="text-2xl font-bold text-gray-700 mb-8">Introducción Visual</h3>
+        <div class="w-full flex justify-center">
+          <iframe class="w-full max-w-2xl h-[320px] md:h-[400px] rounded-lg shadow-lg" src="https://www.youtube.com/embed/R5EXap3vNDA" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </section>
 
       <!-- Recursos -->
-      <section class="bg-gray-50 py-12 rounded-xl">
-        <h3 class="text-2xl font-bold text-gray-800 mb-6">Recursos adicionales</h3>
-        <p class="text-gray-600 mb-4">Aquí puedes encontrar enlaces y recursos para profundizar más sobre Tailwind CSS:</p>
-        <ul class="space-y-4">
-          <li><a href="https://tailwindcss.com/docs" class="text-blue-600 hover:text-blue-500">Documentación oficial de Tailwind CSS</a></li>
-          <li><a href="https://codepen.io/tag/tailwind-css" class="text-blue-600 hover:text-blue-500">Explora ejemplos en CodePen</a></li>
-          <li><a href="https://www.youtube.com/results?search_query=tailwind+css" class="text-blue-600 hover:text-blue-500">Tutoriales en YouTube</a></li>
-        </ul>
-      </section>
+    <section class="max-w-4xl mx-auto space-y-4 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-12 text-left">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">Recursos adicionales</h3>
+      <p class="text-gray-600 mb-4">Aquí puedes encontrar enlaces y recursos para profundizar más sobre Tailwind CSS:
+      </p>
+      <ul class="space-y-4">
+        <li><a href="https://tailwindcss.com/docs" class="text-blue-600 hover:text-blue-500">Documentación oficial de
+            Tailwind CSS</a></li>
+        <li><a href="https://codepen.io/tag/tailwind-css" class="text-blue-600 hover:text-blue-500">Explora ejemplos en
+            CodePen</a></li>
+      </ul>
+    </section>
     </div>
   </main>
 
